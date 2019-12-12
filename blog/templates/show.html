@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post The Blog</title>
+     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+{% if Blogs %}
+
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for Blogs in Blogs %}
+    <tr>
+        <td>{{ Blogs.title }}</td>
+        <td>{{ Blogs.description }}</td>
+        <td>{{ Blogs.created_date }}</td>
+        <td>{{ Blogs.updated_date }}</td>
+        <td>
+            <a href="/edit/{{ Blogs.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/delete/{{ Blogs.id }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endif %}
+<br>
+<br>
+<center><a href="/" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>
